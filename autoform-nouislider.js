@@ -99,15 +99,18 @@ Template.afNoUiSlider.rendered = function () {
     $s.noUiSlider(options, true);
 
     if (c.firstRun) {
+      $s.on('change', function() {
+        $s.parent()[0].value = JSON.stringify($s.val());
+        $s.parent().change();
+        $s.data('changed','true');
+      });
+
       $s.on('slide', function(){
         // This is a trick to fool some logic in AutoForm that makes
         // sure values have actually changed on whichever element
         // emits a change event. Eventually AutoForm will give
         // input types the control of indicating exactly when
         // their value changes rather than relying on the change event
-        $s.parent()[0].value = JSON.stringify($s.val());
-        $s.parent().change();
-        $s.data('changed','true');
         // Update label right and label left
         if( data.atts.schemaLabel ){
           $s.siblings(".nouislider-label-left").text(parseInt($s.val()[0]));

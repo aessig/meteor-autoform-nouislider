@@ -1,7 +1,7 @@
 Package.describe({
   name: 'aessig:autoform-nouislider',
   summary: 'Dual value slider for autoform.',
-  version: '0.2.0_6',
+  version: '0.2.0_7',
   git: 'https://github.com/aessig/meteor-autoform-nouislider'
 });
 
