@@ -4,10 +4,8 @@ aessig:autoform-nouislider
 `meteor add aessig:autoform-nouislider`
 
 ## Custom version
-Dynamic Label updating
-Add `schemaLabel=true` to active the feature
-
-Trigger autoform autosave only on "change" event instead of "slide" event. (Less intense in terms of requests)
+- Dynamic Label updating. Add `schemaLabel=true` to active the feature
+- Trigger autoform autosave only on "change" event instead of "slide" event. (Less intense in terms of requests)
 
 ## Configuration
 Adds the `noUiSlider` type to [autoform](https://github.com/aldeed/meteor-autoform). It uses `min`, `max`, and `step` attributes like a normal slider, so it can be a drop in replacement, but options passed as `noUiSliderOptions` are passed directly to [nouislider](http://refreshless.com/nouislider/) for advanced control.
