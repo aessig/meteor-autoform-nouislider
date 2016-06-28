@@ -1,4 +1,4 @@
-muqube:autoform-nouislider
+aessig:autoform-nouislider
 =========================
 
 `meteor add aessig:autoform-nouislider`
