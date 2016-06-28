@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'muqube:autoform-nouislider',
+  name: 'aessig:autoform-nouislider',
   summary: 'Dual value slider for autoform.',
-  version: '0.2.0_3',
-  git: 'https://github.com/ElevateDevelopmentAndDesign/meteor-autoform-nouislider'
+  version: '0.2.0_5',
+  git: 'https://github.com/aessig/meteor-autoform-nouislider'
 });
 
 Package.onUse(function(api) {

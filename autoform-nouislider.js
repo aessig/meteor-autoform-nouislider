@@ -30,6 +30,11 @@ Template.afNoUiSlider.helpers({
       atts["class"] = "at-nouislider";
     }
 
+    if (atts.schemaLabel) {
+      atts.labelLeft = data.min;
+      atts.labelRight = data.max;
+    }
+
     atts.doLabels = ( atts.labelLeft || atts.labelRight );
 
     return _.omit(atts, 'noUiSliderOptions', 'noUiSlider_pipsOptions');
@@ -103,15 +108,20 @@ Template.afNoUiSlider.rendered = function () {
         $s.parent()[0].value = JSON.stringify($s.val());
         $s.parent().change();
         $s.data('changed','true');
+        // Update label right and label left
+        if( data.atts.schemaLabel ){
+          $s.siblings(".nouislider-label-left").text(parseInt($s.val()[0]));
+          $s.siblings(".nouislider-label-right").text(parseInt($s.val()[1]));
+        }
       });
     }
-    
+
     if( data.atts.noUiSlider_pipsOptions ){
       $s.noUiSlider_pips(
         data.atts.noUiSlider_pipsOptions
       );
     }
   };
-  
+
   template.autorun( setup );
 };
