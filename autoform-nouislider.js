@@ -32,19 +32,12 @@ Template.afNoUiSlider.helpers({
 
     if (atts.schemaLabel) {
       if (atts.optionsLabel) {
-        console.log(atts.optionsLabel[data.min]);
-        console.log(atts.optionsLabel[data.max]);
-        atts.labelLeft = data.min;
-        atts.labelRight = data.max;
+        atts.labelLeft = atts.optionsLabel[data.min];
+        atts.labelRight = atts.optionsLabel[data.max];
       }else{
         atts.labelLeft = data.min;
         atts.labelRight = data.max;
       }
-    }
-    
-    if (atts.schemaLabel) {
-      atts.labelLeft = data.min;
-      atts.labelRight = data.max;
     }
 
     atts.doLabels = ( atts.labelLeft || atts.labelRight );
@@ -109,6 +102,8 @@ Template.afNoUiSlider.rendered = function () {
     var data = Template.currentData(); // get data reactively
     var options = calculateOptions( data );
     $s.noUiSlider(options, true);
+    if(data.atts.optionsLabel)
+    console.log(data.atts.optionsLabel);
 
     if (c.firstRun) {
       $s.on('change', function() {
@@ -125,8 +120,13 @@ Template.afNoUiSlider.rendered = function () {
         // their value changes rather than relying on the change event
         // Update label right and label left
         if( data.atts.schemaLabel ){
-          $s.siblings(".nouislider-label-left").text(parseInt($s.val()[0]));
-          $s.siblings(".nouislider-label-right").text(parseInt($s.val()[1]));
+          if(data.atts.optionsLabel){
+            $s.siblings(".nouislider-label-left").text(data.atts.optionsLabel[parseInt($s.val()[0])]);
+            $s.siblings(".nouislider-label-right").text(data.atts.optionsLabel[parseInt($s.val()[1])]);
+          }else{
+            $s.siblings(".nouislider-label-left").text(parseInt($s.val()[0]));
+            $s.siblings(".nouislider-label-right").text(parseInt($s.val()[1]));
+          }
         }
       });
     }
