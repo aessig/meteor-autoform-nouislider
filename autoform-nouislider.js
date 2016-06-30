@@ -103,7 +103,6 @@ Template.afNoUiSlider.rendered = function () {
     var options = calculateOptions( data );
     $s.noUiSlider(options, true);
     if(data.atts.optionsLabel)
-    console.log(data.atts.optionsLabel);
 
     if (c.firstRun) {
       $s.on('change', function() {
