@@ -31,6 +31,18 @@ Template.afNoUiSlider.helpers({
     }
 
     if (atts.schemaLabel) {
+      if (atts.optionsLabel) {
+        console.log(atts.optionsLabel[data.min]);
+        console.log(atts.optionsLabel[data.max]);
+        atts.labelLeft = data.min;
+        atts.labelRight = data.max;
+      }else{
+        atts.labelLeft = data.min;
+        atts.labelRight = data.max;
+      }
+    }
+    
+    if (atts.schemaLabel) {
       atts.labelLeft = data.min;
       atts.labelRight = data.max;
     }
