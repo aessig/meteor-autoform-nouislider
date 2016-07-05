@@ -32,11 +32,23 @@ Template.afNoUiSlider.helpers({
 
     if (atts.schemaLabel) {
       if (atts.optionsLabel) {
-        atts.labelLeft = atts.optionsLabel[data.min];
-        atts.labelRight = atts.optionsLabel[data.max];
+        if(data.value){
+          // console.log(data.value);
+          atts.labelLeft = atts.optionsLabel[data.value.lower];
+          atts.labelRight = atts.optionsLabel[data.value.upper];
+        }else{
+          atts.labelLeft = atts.optionsLabel[data.min];
+          atts.labelRight = atts.optionsLabel[data.max];
+        }
       }else{
-        atts.labelLeft = data.min;
-        atts.labelRight = data.max;
+        if(data.value){
+          // console.log(data.value);
+          atts.labelLeft = data.value.lower;
+          atts.labelRight = data.value.upper;
+        }else {
+          atts.labelLeft = data.min;
+          atts.labelRight = data.max;
+        }
       }
     }
 
@@ -101,8 +113,8 @@ Template.afNoUiSlider.rendered = function () {
   var setup = function(c){
     var data = Template.currentData(); // get data reactively
     var options = calculateOptions( data );
+
     $s.noUiSlider(options, true);
-    if(data.atts.optionsLabel)
 
     if (c.firstRun) {
       $s.on('change', function() {
